@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="vladbaransky@gmail.com">
+        <createTable tableName="item">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(40)"/>
+            <column name="description" type="varchar(40)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="aperavoznikau@gmail.com">
+        <createTable tableName="item_details">
+            <column name="item_id" type="BIGINT">
+                <constraints primaryKey="true"
+                             foreignKeyName="fk_item_details"
+                             referencedTableName="item"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="price" type="varchar(40)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="vladbaransky@gmail.com">
+        <createTable tableName="shop">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(40)"/>
+            <column name="location" type="varchar(40)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="4" author="vladbaransky@gmail.com">
+        <createTable tableName="shop_item">
+            <column name="item_id" type="BIGINT">
+                <constraints foreignKeyName="fk_shop1_item"
+                             referencedTableName="item"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="shop_id" type="BIGINT">
+                <constraints foreignKeyName="fk_shop2_item"
+                             referencedTableName="shop"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
