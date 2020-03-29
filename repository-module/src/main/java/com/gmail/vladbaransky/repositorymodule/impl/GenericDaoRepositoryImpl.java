@@ -10,9 +10,9 @@ import java.util.List;
 
 public class GenericDaoRepositoryImpl<I, T> implements GenericDaoRepository<I, T> {
 
-    private Class<T> entityClass;
+    protected Class<T> entityClass;
     @PersistenceContext
-    private EntityManager entityManager;
+    protected EntityManager entityManager;
 
     @SuppressWarnings("unchecked")
     public GenericDaoRepositoryImpl() {
@@ -23,7 +23,7 @@ public class GenericDaoRepositoryImpl<I, T> implements GenericDaoRepository<I, T
 
     @Override
     public List<T> findAll() {
-        String query = "from " + entityClass.getName() + " c";
+        String query = "from " + entityClass.getName() + " c  ORDER BY c.name ASC";
         Query q = entityManager.createQuery(query);
         return q.getResultList();
     }

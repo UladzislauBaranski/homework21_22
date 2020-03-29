@@ -4,14 +4,13 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class ItemDTO {
-
+    String NOT_NULL_NAME_MESSAGE = "Name cannot be empty";
     private Long id;
     private String name;
     private String description;
     private BigDecimal price;
-    private List<ShopDTO> shops = new ArrayList<>();
+    private List<ShopDTO> shopsDTO = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -45,22 +44,13 @@ public class ItemDTO {
         this.price = price;
     }
 
-    public List<ShopDTO> getShops() {
-        return shops;
+    public List<ShopDTO> getShopsDTO() {
+        return shopsDTO;
     }
 
-    public void setShops(List<ShopDTO> shops) {
-        this.shops = shops;
+    public void setShopsDTO(List<ShopDTO> shopsDTO) {
+        this.shopsDTO = shopsDTO;
     }
 
-    @Override
-    public String toString() {
-        return "ItemDTO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", shops=" + shops +
-                '}';
-    }
+
 }

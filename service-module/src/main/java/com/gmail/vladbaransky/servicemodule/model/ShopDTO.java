@@ -1,6 +1,7 @@
 package com.gmail.vladbaransky.servicemodule.model;
 
 import com.gmail.vladbaransky.repositorymodule.model.Item;
+import com.sun.istack.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;

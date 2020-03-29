@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add shop</title>
+    <title>Location</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}"/>
 </head>
@@ -11,21 +11,22 @@
         <div class="col">
         </div>
         <div class="col">
-            <form action="#" method="post" th:action="@{/add/shop}" th:object="${shop}">
+
+            <form action="#" method="post" th:action="@{/find/location}" th:object="${shop}">
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input class="form-control" id="name" th:field="*{name}" type="text"><br>
+                    <label for="location">Please insert location:</label><br>
                     <label for="location">Location</label>
-                    <input class="form-control" id="location" th:field="*{location}" type="text">
+                    <input th:value="*{location}" class="form-control" id="location" type="text" name="location"
+                           required autofocus><br>
+
+                    <button class="btn btn-primary" type="submit">Find</button>
                 </div>
-                <button class="btn btn-primary" type="submit">Submit</button>
             </form>
-        </div>
-        <div class="col">
         </div>
     </div>
 </div>
 <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
 </body>
+
 </html>

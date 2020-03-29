@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add item</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+</head>
+<body>
+<form action="#" th:action="@{/add/item}" method="post" th:object="${item}">
+    <h1>Add item</h1>
+    Name: <input th:value="*{name}" type="text" name="name" required autofocus><br>
+    Description: <input th:value="*{description}" type="text" name="description" required><br>
+    Price: <input th:value="*{price}" type="text" name="price" required><br>
+    Select shops to place the item:
+    <div th:each="shop:${shops}">
+        <input type="checkbox" th:text="${shop.name}" name="shopId" th:value="${shop.id}"><br>
+    </div>
+    <input type="submit" value="Add"/>
+    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/>
+    <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}"/>
+    <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}"/>
+</form>
+<a href="#" th:href="@{/items}">Show all items</a><br>
+<a href="#" th:href="@{/}">Back to welcome page</a><br>
+</body>
+</html>

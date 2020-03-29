@@ -17,14 +17,15 @@ public class Item {
     @Column(name = "description")
     private String description;
 
+
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "item", cascade = CascadeType.ALL,
             orphanRemoval = true)
     private ItemDetails itemDetails;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "shop_item",
-            joinColumns = {@JoinColumn(name = "shop_id")},
-            inverseJoinColumns = {@JoinColumn(name = "item_id")})
+            joinColumns = @JoinColumn(name = "item_id"),
+            inverseJoinColumns = @JoinColumn(name = "shop_id"))
     private List<Shop> shops = new ArrayList<>();
 
     public Long getId() {
@@ -67,6 +68,7 @@ public class Item {
         this.shops = shops;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -75,12 +77,24 @@ public class Item {
         return Objects.equals(id, item.id) &&
                 Objects.equals(name, item.name) &&
                 Objects.equals(description, item.description) &&
-                Objects.equals(itemDetails, item.itemDetails);
+                Objects.equals(itemDetails, item.itemDetails) &&
+                Objects.equals(shops, item.shops);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, itemDetails);
+        return Objects.hash(id, name, description, itemDetails, shops);
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", itemDetails=" + itemDetails +
+                ", shops=" + shops +
+                '}';
     }
 }
 

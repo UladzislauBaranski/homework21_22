@@ -10,4 +10,5 @@ public interface GenericDaoRepository<I, T> {
     T findById(I id);
 
     void delete(T entity);
+
 }

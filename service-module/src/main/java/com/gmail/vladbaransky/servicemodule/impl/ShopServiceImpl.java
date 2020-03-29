@@ -23,6 +23,7 @@ public class ShopServiceImpl implements ShopService {
     @Transactional
     public List<ShopDTO> findAll() {
         List<Shop> shops = shopRepository.findAll();
+
         return shops.stream()
                 .map(this::getDTOFromObject)
                 .collect(Collectors.toList());
@@ -35,9 +36,19 @@ public class ShopServiceImpl implements ShopService {
         shopRepository.add(shop);
     }
 
+    @Override
+    @Transactional
+    public List<ShopDTO> findByLocation(String location) {
+        List<Shop> shops = shopRepository.findByLocation(location);
+        return shops.stream()
+                .map(this::getDTOFromObject)
+                .collect(Collectors.toList());
+
+    }
+
     private ShopDTO getDTOFromObject(Shop shop) {
         ShopDTO shopDTO = new ShopDTO();
-        shopDTO.setId(shop.getId());
+         shopDTO.setId(shop.getId());
         shopDTO.setName(shop.getName());
         shopDTO.setLocation(shop.getLocation());
         return shopDTO;

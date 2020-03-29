@@ -12,17 +12,18 @@ import javax.sql.DataSource;
 @Configuration
 public class DataBaseConfig {
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource){
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
         em.setPackagesToScan("com.gmail.vladbaransky.repositorymodule.model");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         return em;
     }
+
     @Bean
-    public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory){
-        JpaTransactionManager transactionManager= new JpaTransactionManager();
+    public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory);
-        return  transactionManager;
+        return transactionManager;
     }
 }
