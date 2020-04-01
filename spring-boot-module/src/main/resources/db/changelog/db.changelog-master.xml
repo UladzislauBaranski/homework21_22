@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="vladbaransky@gmail.com">
+        <createTable tableName="item">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(40)"/>
+            <column name="description" type="varchar(40)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="aperavoznikau@gmail.com">
+        <createTable tableName="item_details">
+            <column name="item_id" type="BIGINT">
+                <constraints primaryKey="true"
+                             foreignKeyName="fk_item_details"
+                             referencedTableName="item"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="price" type="varchar(40)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="vladbaransky@gmail.com">
+        <createTable tableName="shop">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(40)"/>
+            <column name="location" type="varchar(40)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="4" author="vladbaransky@gmail.com">
+        <createTable tableName="shop_item">
+            <column name="item_id" type="BIGINT">
+                <constraints foreignKeyName="fk_shop1_item"
+                             referencedTableName="item"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="shop_id" type="BIGINT">
+                <constraints foreignKeyName="fk_shop2_item"
+                             referencedTableName="shop"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="5" author="vladbaransky@gmail.com">
+        <createTable tableName="user">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" type="varchar(50)"/>
+            <column name="password" type="varchar(100)"/>
+            <column name="role" type="varchar(100)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="6" author="vladbaransky@gmail.com">
+        <insert tableName="user">
+            <column name="username" value="admin"/>
+            <column name="password" value="$2y$12$8PI0mf9NXsDjxnbYS7xGIuuPLwLlidD5tM241nZPFdhrMKVgt.LNe"/>
+            <column name="role" value="ROLE_ADMIN"/>
+        </insert>
+    </changeSet>
+    <changeSet id="7" author="vladbaransky@gmail.com">
+        <insert tableName="user">
+            <column name="username" value="user"/>
+            <column name="password" value="$2y$12$2TAg8qcDo006NbqO/31iM.Xhul9Ruasaup1OyoRfBFuCntgjtXGEu"/>
+            <column name="role" value="ROLE_USER"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

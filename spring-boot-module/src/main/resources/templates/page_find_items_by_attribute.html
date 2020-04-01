@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Name and price</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+
+            <form action="#" method="post" th:action="@{/find/name}" th:object="${item}">
+                <div class="form-group">
+                    <label for="name1">Please insert name:</label><br>
+                    <label for="name1">Name</label>
+                    <input th:value="*{name}" class="form-control" id="name1" type="text" name="name" required
+                           autofocus><br>
+
+                    <button class="btn btn-primary" type="submit">Find</button>
+                </div>
+            </form>
+            <form action="#" method="post" th:action="@{/find/price}" th:object="${item}">
+                <div class="form-group">
+                    <label for="price1">Please insert prise:</label><br>
+                    <label for="price1">Price</label>
+                    <input th:value="*{price}" class="form-control" id="price1" type="text" name="price" required
+                           autofocus><br>
+                    <button class="btn btn-primary" type="submit">Find</button>
+                </div>
+                <div class="form-group">
+                </div>
+            </form>
+
+            <form action="#" method="post" th:action="@{/find/all}" th:object="${item}">
+                <div class="form-group">
+                    <label for="name">Please, insert name and price:</label><br>
+                    <label for="name">Name</label>
+                    <input th:value="*{name}" class="form-control" id="name" type="text" name="name" required autofocus><br>
+                    <label for="price">Price</label>
+                    <input th:value="*{price}" class="form-control" id="price" type="text" name="price" required
+                           autofocus><br>
+                    <button class="btn btn-primary" type="submit">Find</button>
+                </div>
+                <div class="form-group">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
+</body>
+
+</html>

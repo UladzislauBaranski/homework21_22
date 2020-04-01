@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Location</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form action="#" method="post" th:action="@{/find/location}" th:object="${shop}">
+                <div class="form-group">
+                    <label for="location">Please insert location:</label><br>
+                    <label for="location">Location</label>
+                    <input th:value="*{location}" class="form-control" id="location" type="text" name="location"
+                           required autofocus><br>
+
+                    <button class="btn btn-primary" type="submit">Find</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
+</body>
+
+</html>
