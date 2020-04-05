@@ -9,8 +9,6 @@
 <div class="container">
     <div class="row">
         <div class="col">
-        </div>
-        <div class="col">
             <table class="table table-dark">
                 <thead>
                 <h1>List items and shops by id</h1>
@@ -22,13 +20,18 @@
                     <td>LOCATION</td>
                 </tr>
                 </thead>
-                <tbody th:each="shop:${shops}">
+                <tbody>
                 <tr>
-                    <td th:text="${item.name}">Item name</td>
+                   <td th:text="${item.name}">Item name</td>
                     <td th:text="${item.description}">Item description</td>
                     <td th:text="${item.price}">Item price</td>
-                    <td th:text="${shop.name}">Shop name</td>
-                    <td th:text="${shop.location}">Shop location</td>
+                    <td th:each="shop:${shops}">
+                    <span th:text="${shop.name}">Shop name</span><br>
+                    </td>
+                    <td th:each="shop:${shops}">
+                        <span th:text="${shop.location}">Shop location</span><br>
+                    </td>
+
                 </tr>
                 </tbody>
             </table>

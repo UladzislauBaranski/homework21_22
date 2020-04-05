@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemDTO {
-    String NOT_NULL_NAME_MESSAGE = "Name cannot be empty";
     private Long id;
     private String name;
     private String description;

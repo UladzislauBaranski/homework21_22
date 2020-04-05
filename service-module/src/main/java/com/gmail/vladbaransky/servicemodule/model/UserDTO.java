@@ -1,6 +1,5 @@
 package com.gmail.vladbaransky.servicemodule.model;
 
-
 import com.gmail.vladbaransky.repositorymodule.model.RoleEnum;
 
 public class UserDTO {

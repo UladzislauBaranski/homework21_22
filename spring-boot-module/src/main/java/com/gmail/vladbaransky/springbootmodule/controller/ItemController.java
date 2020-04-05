@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -51,15 +52,17 @@ public class ItemController {
             model.addAttribute("item", item);
             return "item_add";
         } else {
+            List<ShopDTO> shops2=new ArrayList<>();
             List<ShopDTO> shops = shopService.findAll();
             for (int i = 0; i < shops.size(); i++) {
-                for (Long aLong : shopId) {
-                    if (aLong.equals(shops.get(i).getId())) {
-                        item.setShopsDTO(shops);
+                for (Long id : shopId) {
+                    if (id.equals(shops.get(i).getId())) {
+                        shops2.add(shops.get(i));
                     }
                 }
-                itemService.addItemAndShop(item);
             }
+            item.setShopsDTO(shops2);
+            itemService.addItemAndShop(item);
             model.addAttribute("item", item);
             model.addAttribute("shops", item.getShopsDTO());
             return "item_and_shop";
@@ -75,7 +78,7 @@ public class ItemController {
     }
 
     @PostMapping("/find")
-    public String addShop(
+    public String findById(
             @Valid @ModelAttribute(name = "item") ItemDTO item,
             BindingResult bindingResult,
             Model model
